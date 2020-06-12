@@ -1,0 +1,31 @@
+{
+  "name": "abes-uptimerobot-widget",
+  "version": "1.0.0",
+  "description": "Widget used for displaying a nice sun/cloud based on the uptimerobot monitors list status (UP/DOWN)",
+  "private": false,
+  "scripts": {
+    "prettier": "prettier --write src/*.js src/*.css",
+    "build-prod": "webpack -p --config webpack.config.js",
+    "watch": "webpack-dev-server -d --host 0.0.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abes-esr/abes-uptimerobot-widget"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.3",
+    "prettier": "^2.0.5",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-auto-inject-version": "^1.2.2",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
