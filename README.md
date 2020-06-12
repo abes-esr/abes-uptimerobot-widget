@@ -8,7 +8,8 @@ Il repose sur l'API d'uptimerobot pour récupérer l'état UP/DOWN des applicati
 
 Intégrez le javascript sur votre votre page html :
 ```html
-<script src="xxxxx/bundle.min.js" ></script>
+<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/node_modules/axios/dist/axios.min.js"></script>
+<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/bundle.min.js"></script>
 ```
 Ensuite instanciez l'objet AbesUptimerobotWidget :
 ```html
@@ -56,6 +57,7 @@ Le résultat du build sera présent dans le répertoire `dist/`
 VERSION=$(npm version patch) # si c'est pour un bug fix
 VERSION=$(npm version minor) # si c'est pour une nouvelle fonctionnalité
 VERSION=$(npm version major) # si la compatibilité ascendante est cassée
+git commit -m "new version" package.json
 
 # Builder et commiter le code pour la prod dans le répertoire `dist/`
 npm run build-prod
@@ -67,4 +69,8 @@ git tag $VERSION
 git push && git push --tags
 ```
 
-Le code du widget à inclure sur votre site web est alors disponible ici : TODO
+Le code du widget à inclure sur votre site web est alors disponible ici (adaptez XXXXXX par le nouveau numéro de version généré) :
+```html
+<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
+<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
+```
