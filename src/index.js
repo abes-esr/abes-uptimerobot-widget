@@ -7,10 +7,10 @@ export default class AbesUptimerobotWidget {
   constructor(options) {
     this.api_url = options.api_url;
     this.api_key = options.api_key;
-    this.onLOADING = options.onLOADING;
+    this.onLOADING = options.onLOADING || (() => {});
     this.onUP = options.onUP;
     this.onDOWN = options.onDOWN;
-    this.ignoreMonitors = options.ignoreMonitors;
+    this.ignoreMonitors = options.ignoreMonitors || (() => { return false });
 
     this._checkUptimeRobotApi();
   }
@@ -60,7 +60,7 @@ export default class AbesUptimerobotWidget {
                 monitorsMerged = monitorsMerged.concat(arguments[page].data.monitors);
             };
             for (var i = 0; i < monitorsMerged.length; i++) {
-                if (self.ignoreMonitors === undefined || !self.ignoreMonitors(monitorsMerged[i])) {
+                if (!self.ignoreMonitors(monitorsMerged[i])) {
                   //console.log(monitorsMerged[i].friendly_name, monitorsMerged[i].status);
                   if (monitorsMerged[i].status != 2 && monitorsMerged[i].status != 0) {
                     ok = false;
