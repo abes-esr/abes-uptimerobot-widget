@@ -1,0 +1,4 @@
+# used by babel-preset-env https://babeljs.io/docs/en/babel-preset-env#browserslist-integration
+# Browsers that we support
+defaults
+not ie <= 9

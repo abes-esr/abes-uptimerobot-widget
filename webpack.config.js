@@ -28,10 +28,11 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   module:{
-        rules:[
-            {test:/\.css$/,use:['style-loader','css-loader']},
-            {test:/\.html$/,use:['html-loader']},
-            {test:/\.md$/,use: ["html-loader","markdown-loader"]}
-       ]
-    }
+    rules:[
+      {test:/\.css$/,use:['style-loader','css-loader']},
+      {test:/\.html$/,use:['html-loader']},
+      {test:/\.md$/,use: ["html-loader","markdown-loader"]},
+      {test:/\.js$/,exclude: /node_modules/,use: {loader: 'babel-loader'}}
+    ]
+  }
 };

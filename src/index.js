@@ -1,3 +1,5 @@
+import '@babel/polyfill'; // permet d'inclure les polyfill dans le bundle
+
 import axios from 'axios';
 
 export default class AbesUptimerobotWidget {
