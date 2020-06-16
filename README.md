@@ -11,15 +11,29 @@ Intégrez le javascript sur votre votre page html :
 <script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/node_modules/axios/dist/axios.min.js"></script>
 <script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/bundle.min.js"></script>
 ```
-Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML :
+Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML, dont voici un exemple :
 ```html
 <script>
   $auw = new AbesUptimerobotWidget({
-    api_key: 'eee'
+    api_url: 'https://api.uptimerobot.com/v2/getMonitors',
+    api_key: 'ur707639-b082a50474d1cfbe940438bc',
+    onLOADING: function () {
+      document.getElementById('abes-meteo-icon').className = 'status-loading';
+    },
+    onUP: function () {
+      document.getElementById('abes-meteo-icon').className = 'status-ok';
+    },
+    onDOWN: function () {
+      document.getElementById('abes-meteo-icon').className = 'status-ko';
+    }
   });
   // TODO
 </script>
 ```
+
+- onLOADING est appelée dès le début de l'appel à l'API uptimerobot (qui peut prendre quelques millisecondes). C'est l'occasion de positionner un indicateur visuel pour faire patienter l'utilisateur.
+- onUP est appelée dès le retour de l'API uptimerobot si l'ensemble des "monitors" sont dans l'état UP. C'est l'occasion de positionner un soleil, un led vert, ou un coeur pour signaler la bonne nouvelle à l'utilisateur.
+- onDOWN est appelée dès le retour de l'API uptimerobot si au moins un "monitor" est dans l'état DOWN. C'est l'occasion de signaler visuellement la mauvaise nouvelle à l'utilisateur.
 
 ## Développeur
 
