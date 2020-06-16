@@ -16,28 +16,12 @@ Ou bien télécharger la version souhaitée depuis :
 https://github.com/abes-esr/abes-uptimerobot-widget/releases
 
 Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML, dont voici un exemple :
-```html
-<script>
-  $auw = new AbesUptimerobotWidget({
-    api_url: 'https://api.uptimerobot.com/v2/getMonitors',
-    api_key: 'ur707639-b082a50474d1cfbe940438bc',
-    onLOADING: function () {
-      document.getElementById('abes-meteo-icon').className = 'status-loading';
-    },
-    onUP: function () {
-      document.getElementById('abes-meteo-icon').className = 'status-ok';
-    },
-    onDOWN: function () {
-      document.getElementById('abes-meteo-icon').className = 'status-ko';
-    }
-  });
-  // TODO
-</script>
-```
+https://github.com/abes-esr/abes-uptimerobot-widget/blob/master/src/index.html#L27-L44
 
 - onLOADING est appelée dès le début de l'appel à l'API uptimerobot (qui peut prendre quelques millisecondes). C'est l'occasion de positionner un indicateur visuel pour faire patienter l'utilisateur.
 - onUP est appelée dès le retour de l'API uptimerobot si l'ensemble des "monitors" sont dans l'état UP. C'est l'occasion de positionner un soleil, un led vert, ou un coeur pour signaler la bonne nouvelle à l'utilisateur.
 - onDOWN est appelée dès le retour de l'API uptimerobot si au moins un "monitor" est dans l'état DOWN. C'est l'occasion de signaler visuellement la mauvaise nouvelle à l'utilisateur.
+- ignoreMonitors est facultative, elle est appelée pour ignorer si besoin des "monitor" dans la détection UP/DOWN. Dans le cas de l'Abes, cette fonction est utilisée pour filtrer les application support (internes à l'Abes) de la météo des application de l'Abes (publiquement exposée aux réseaux de l'Abes). 
 
 ## Développeur
 
