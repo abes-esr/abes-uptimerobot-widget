@@ -1,6 +1,6 @@
 {
   "name": "abes-uptimerobot-widget",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Widget used for displaying a nice sun/cloud based on the uptimerobot monitors list status (UP/DOWN)",
   "private": false,
   "scripts": {
