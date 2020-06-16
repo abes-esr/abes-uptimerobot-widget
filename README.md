@@ -11,10 +11,10 @@ Intégrez le javascript sur votre votre page html depuis les URL suivantes (adap
 <script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
 <script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
 
+```
 Ou bien télécharger la version souhaitée depuis :
 https://github.com/abes-esr/abes-uptimerobot-widget/releases
 
-```
 Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML, dont voici un exemple :
 ```html
 <script>
