@@ -39,6 +39,14 @@
 			onDOWN: function () {
 				document.getElementById('abes-meteo-icon').className = 'status-ko';
 				console.log('DOWN');
+			},
+			ignoreMonitors: function (monitor) {
+				// ignore les sondes ayant la chaîne de caractère "[-]"
+				// qui dans les convention Abes permet d'ignorer les application support
+				// de la visibilité auprès des réseaux de l'Abes car ces applications
+				// n'intéressent que les agents interne de l'Abes.
+				// &#091;-&#093; est la version encodée en entitées HTML que UptimeRobot expose avec son API
+				return monitor.friendly_name.indexOf('&#091;-&#093;') != -1;
 			}
 		});
 	</script>
