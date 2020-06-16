@@ -6,10 +6,14 @@ Il repose sur l'API d'uptimerobot pour récupérer l'état UP/DOWN des applicati
 
 ## Usage : intégration dans un site HTML
 
-Intégrez le javascript sur votre votre page html :
+Intégrez le javascript sur votre votre page html depuis les URL suivantes (adaptez XXXXXX par le numéro de version souhaité) :
 ```html
-<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/node_modules/axios/dist/axios.min.js"></script>
-<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/bundle.min.js"></script>
+<script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
+<script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
+
+Ou bien télécharger la version souhaitée depuis :
+https://github.com/abes-esr/abes-uptimerobot-widget/releases
+
 ```
 Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML, dont voici un exemple :
 ```html
@@ -85,6 +89,6 @@ git push && git push --tags
 
 Le code du widget à inclure sur votre site web est alors disponible ici (adaptez XXXXXX par le nouveau numéro de version généré) :
 ```html
-<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
-<script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
+<script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
+<script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
 ```
