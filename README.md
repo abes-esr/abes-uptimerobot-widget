@@ -8,7 +8,6 @@ Il repose sur l'API d'uptimerobot pour récupérer l'état UP/DOWN des applicati
 
 Intégrez le javascript sur votre votre page html depuis les URL suivantes (adaptez XXXXXX par le numéro de version souhaité) :
 ```html
-<script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
 <script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
 
 ```
@@ -16,7 +15,7 @@ Ou bien télécharger la version souhaitée depuis :
 https://github.com/abes-esr/abes-uptimerobot-widget/releases
 
 Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML, dont voici un exemple :
-https://github.com/abes-esr/abes-uptimerobot-widget/blob/master/src/index.html#L27-L44
+https://github.com/abes-esr/abes-uptimerobot-widget/blob/master/src/index.html
 
 - onLOADING est appelée dès le début de l'appel à l'API uptimerobot (qui peut prendre quelques millisecondes). C'est l'occasion de positionner un indicateur visuel pour faire patienter l'utilisateur.
 - onUP est appelée dès le retour de l'API uptimerobot si l'ensemble des "monitors" sont dans l'état UP. C'est l'occasion de positionner un soleil, un led vert, ou un coeur pour signaler la bonne nouvelle à l'utilisateur.
@@ -73,6 +72,5 @@ git push && git push --tags
 
 Le code du widget à inclure sur votre site web est alors disponible ici (adaptez XXXXXX par le nouveau numéro de version généré) :
 ```html
-<script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/node_modules/axios/dist/axios.min.js"></script>
 <script src="https://raw.githubusercontent.com/abes-esr/abes-uptimerobot-widget/XXXXXX/dist/bundle.min.js"></script>
 ```

@@ -22,8 +22,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new WebpackAutoInject(),
     new webpack.NamedModulesPlugin(),
-    new CopyWebpackPlugin([{ from: 'node_modules/axios/dist/axios.min*', to: './' }]),
-    new CopyWebpackPlugin([{ from: 'src/img', to: './img' }]),
+    new CopyWebpackPlugin([{ from: 'src/img', to: './img' }]), // not used
     new CopyWebpackPlugin([{ from: 'src/index.html', to: './' }]),
     new webpack.HotModuleReplacementPlugin()
   ],
