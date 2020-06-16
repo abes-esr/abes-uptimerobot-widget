@@ -11,7 +11,7 @@ Intégrez le javascript sur votre votre page html :
 <script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/node_modules/axios/dist/axios.min.js"></script>
 <script src="https://raw.githubusercontent.com/kerphi/abes-uptimerobot-widget/v1.0.1/dist/bundle.min.js"></script>
 ```
-Ensuite instanciez l'objet AbesUptimerobotWidget :
+Ensuite instanciez l'objet AbesUptimerobotWidget dans votre page HTML :
 ```html
 <script>
   $auw = new AbesUptimerobotWidget({
