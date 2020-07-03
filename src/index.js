@@ -1,4 +1,5 @@
-import '@babel/polyfill'; // permet d'inclure les polyfill dans le bundle
+// inclusion des polyfill
+import 'core-js/features/promise'; // utilisé par axios
 
 import axios from 'axios';
 

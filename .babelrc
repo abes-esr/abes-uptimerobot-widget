@@ -1,9 +1,3 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env", {
-        "debug": false
-      }
-    ]
-  ]
+  "presets": ["@babel/env"]
 }
