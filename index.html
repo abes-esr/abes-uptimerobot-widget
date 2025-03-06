@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+</head>
+<body style="background-color: #FFF;margin: 0">
+	
+    <p>
+        Page permettant de tester et développer le script abes-uptimerobot-widget.
+        Le carré ci-dessous devient jaune si toutes les sondes sont UP,
+        et devient gris si au moins une des sonde est DOWN.
+        Le carré est blanc le temps de réupérer l'état UP / DOWN.
+    </p>
+
+    <style>
+        #abes-meteo-icon { width: 20px; height: 20px; border: 1px solid #000; }
+        #abes-meteo-icon.status-ok { color: green; background-color: green;  }
+        #abes-meteo-icon.status-ko { color: red; background-color: red; }
+        #abes-meteo-icon.status-loading { color: grey; background-color: grey; }
+    </style>
+    <div id="abes-meteo-icon" class=""></div>
+
+	<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('https://api.uptimerobot.com/v2/getMonitors', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            api_key: 'ur707639-b082a50474d1cfbe940438bc',
+            format: 'json'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        // Boucler sur toutes les pages des moniteurs
+        var upApiMonitorPerPage = 50;
+        var monitorsNbPages = Math.floor(data.pagination.total / upApiMonitorPerPage) + 1;
+        var monitorFetchRequests = [];
+
+        for (var page = 0; page < monitorsNbPages; page++) {
+            monitorFetchRequests.push(
+                fetch('https://api.uptimerobot.com/v2/getMonitors', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        api_key: 'ur707639-b082a50474d1cfbe940438bc',
+                        format: 'json',
+                        logs: 1,
+                        offset: page * upApiMonitorPerPage,
+                        limit: upApiMonitorPerPage
+                    })
+                }).then(response => response.json())
+            );
+        }
+
+        document.getElementById('abes-meteo-icon').className = 'status-loading';
+        console.log('LOADING');
+
+        Promise.all(monitorFetchRequests).then(results => {
+            var ok = true;
+            var monitorsMerged = [];           
+            results.forEach(result => {
+                monitorsMerged = monitorsMerged.concat(result.monitors);
+            });
+
+            for (var i = 0; i < monitorsMerged.length; i++) {
+                // ignore les sondes ayant la chaîne de caractère "[-]"
+                // qui dans les convention Abes permet d'ignorer les application support
+                // de la visibilité auprès des réseaux de l'Abes car ces applications
+                // n'intéressent que les agents interne de l'Abes.
+                // &#091;-&#093; est la version encodée en entitées HTML que UptimeRobot expose avec son API
+                if (monitorsMerged[i].friendly_name.indexOf('&#091;-&#093;') == -1 &&
+                    monitorsMerged[i].friendly_name.indexOf('[-]') == -1) {
+                    if (monitorsMerged[i].status != 2 && monitorsMerged[i].status != 0) {
+                        ok = false;
+                    }
+                }
+            }
+            
+            if (ok) {
+                document.getElementById('abes-meteo-icon').className = 'status-ok';
+                console.log('UP');
+            } else {
+                document.getElementById('abes-meteo-icon').className = 'status-ko';
+                console.log('DOWN');
+            }
+        });
+
+
+    })
+    .catch(error => {
+        console.error("Erreur API :", error);
+        document.getElementById('abes-meteo-icon').className = 'status-loading';
+    });
+});
+
+	</script>
+
+</body>
+</html>
