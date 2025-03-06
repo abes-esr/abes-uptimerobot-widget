@@ -6,5 +6,5 @@ Il repose sur l'API d'uptimerobot pour récupérer l'état UP/DOWN des applicati
 
 ## Usage : intégration dans un site HTML
 
-Le code suivant est à utiliser pour intégrer la météo des applications dans une page HTML : 
-TODO
+Le code suivant est à copier/coller pour intégrer la météo des applications dans une page HTML :  
+https://github.com/abes-esr/abes-uptimerobot-widget/blob/master/index.html#L27-L99
